@@ -1,9 +1,14 @@
 import flask
 
-app = flask.Flask('ft')
+app = flask.Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hola Mundo'
+    return flask.render_template('home/index.html')
 
-app.run()
+@app.route('/about')
+def about():
+    return flask.render_template('home/about.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
