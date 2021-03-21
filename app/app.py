@@ -2,13 +2,20 @@ import flask
 
 app = flask.Flask(__name__)
 
-@app.route('/')
-def index():
-    return flask.render_template('home/index.html')
+def main():
+    register_blueprints()
+    app.run(debug = True)
 
-@app.route('/about')
-def about():
-    return flask.render_template('home/about.html')
+def register_blueprints():
+
+    from views import home_views
+    from views import subject_views
+    app.register_blueprint(home_views.blueprint)
+    app.register_blueprint(subject_views.blueprint)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    main() 
+
+else:
+   register_blueprints()
+   app.run(debug = True)
