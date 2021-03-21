@@ -1,0 +1,13 @@
+.main_content {
+  padding: 20px;
+}
+nav {
+  background-color: #000;
+  padding: 20px;
+}
+
+nav > a {
+   color: #fff;
+   text-decoration: none;
+   padding-right: 5px;
+}
