@@ -6,7 +6,7 @@ def main():
     register_blueprints()
     app.run(debug = True)
 
-def register_blueprints():
+def register_blueprints(app=app):
 
     from views import home_views
     from views import subject_views
