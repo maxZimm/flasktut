@@ -15,3 +15,5 @@ def register_blueprints(app=app):
 
 if __name__ == '__main__':
     main() 
+else:
+    register_blueprints()
