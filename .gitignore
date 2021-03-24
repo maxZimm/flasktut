@@ -10,3 +10,5 @@ instance/
 dist/
 build/
 *.egg-info/
+
+PLAN.md
