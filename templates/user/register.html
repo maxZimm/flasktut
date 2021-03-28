@@ -1,0 +1,26 @@
+{% extends 'shared/_layout.html' %}
+
+{% block main_content %}
+  <h1>Create Account</h1>
+
+  <form action='' method='POST' class='form'>
+    <div class='form-group'>
+      <label for='first_name'>First Name</label>
+      <input type='text' name='first_name' class='form-control' required>
+      <label for='last_name'>Last Name</label>
+      <input type='text' name='last_name' class='form-control' required>
+      <label for='email'>Email</label>
+      <input type='email' name='email' class='form-control' required>
+      <label for='password'>Password</label>
+      <input type='password' name='password' class='form-control' required>
+      <button type='submit' class='btn btn-success'>Submit</button>
+    </div>
+    {% if errors %}
+      <div class='errors'>
+        {{ errors }}
+      </div>
+    {% endif %}
+  </form>
+{% endblock %}
+{% block add_js %}
+{% endblock %}
