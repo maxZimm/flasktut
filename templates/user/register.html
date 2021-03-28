@@ -6,11 +6,11 @@
   <form action='' method='POST' class='form'>
     <div class='form-group'>
       <label for='first_name'>First Name</label>
-      <input type='text' name='first_name' class='form-control' required>
+      <input type='text' name='first_name' class='form-control' value='{{ first_name }}' placeholder='...' required>
       <label for='last_name'>Last Name</label>
-      <input type='text' name='last_name' class='form-control' required>
+      <input type='text' name='last_name' class='form-control' value='{{ last_name }}' placeholder='...' required>
       <label for='email'>Email</label>
-      <input type='email' name='email' class='form-control' required>
+      <input type='email' name='email' class='form-control' value='{{ email }}' placeholder='name@host.domain' required>
       <label for='password'>Password</label>
       <input type='password' name='password' class='form-control' required>
       <button type='submit' class='btn btn-success'>Submit</button>
