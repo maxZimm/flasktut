@@ -29,3 +29,21 @@ def hash_text(text):
 
 def verify_hash(text, hashed_text):
     return crypt.verify(text, hashed_text)
+
+def login_user(email, password):
+    session = db_session.create_session()
+
+    user = session.query(User).filter(User.email == email).first()
+
+    if not user:
+        return None
+
+    if not verify_hash(password, user.hashed_password):
+        return None
+
+    return user
+
+def get_user_by_id(user_id):
+    session = db_session.create_session()
+    user = session.query(User).filter(User.id == user_id).first()
+    return user
