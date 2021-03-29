@@ -10,9 +10,16 @@
   </head>
   <body>
     <nav>
-       <a href='/'>Home</a>
-       <a href='/about'>About</a>
+  {% if user %}
+       <a href='/account'>Home</a>
+       <a href='/account/logout'>Logout</a>
        <a href='/subjects'>Subjects</a>
+  {% else %}
+       <a href='/'>Home</a>
+       <a href='/account/login'>Login</a>
+       <a href='/account/register'>Signup</a>
+  {% endif %}
+       <a href='/about'>About</a>
     </nav>
     <div class='main_content'>
       {% block main_content %}
