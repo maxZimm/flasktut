@@ -1,0 +1,9 @@
+{% extends 'shared/_layout.html' %}
+
+{% block main_content %}
+  <h2>{{ course.name }}</h2>
+  <p>{{ course.summary }}</p>
+  <a href='https://{{ course.course_url }}' target='_blank'>Course Site</a>
+
+  <a href='/subjects/{{ course.subject_id}}'>Back</a>
+{% endblock %}

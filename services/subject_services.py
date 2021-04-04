@@ -18,3 +18,8 @@ def get_subject_by_id(s_id):
     session = db_session.create_session()
     s = session.query(Subject).filter(Subject.id == s_id).first()
     return s
+
+def get_all_subjects_user(user):
+    session = db_session.create_session()
+    subjects = session.query(Subject).filter(Subject.user_id == user.id).all()
+    return subjects

@@ -19,4 +19,11 @@
   {% if errors %}
     <div>{{ errors }}</div>
   {% endif %}
+
+  <h3>Your Subjects</h3>
+    <ul>
+    {% for s in subjects %}
+       <li> <a href='/subjects/{{s.id}}'>{{ s.name }}</a></li>
+    {% endfor %}
+    </ul>
 {% endblock %}

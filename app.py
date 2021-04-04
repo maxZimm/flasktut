@@ -15,9 +15,11 @@ def register_blueprints(app=app):
     from views import home_views
     from views import subject_views
     from views import user_views
+    from views import course_views
     app.register_blueprint(home_views.blueprint)
     app.register_blueprint(subject_views.blueprint)
     app.register_blueprint(user_views.blueprint)
+    app.register_blueprint(course_views.blueprint)
 
 if __name__ == '__main__':
     main() 

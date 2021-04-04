@@ -4,4 +4,24 @@
   <h1>{{ subject.name }}</h1>
   <h2>Summary</h2>
     <p>{{ subject.description }}</p>
+
+  <h3>Add Course</h3>
+  <form action='' method='Post' class='form'>
+   <div class='form-group'>
+    <label for='name' class=''>Name</label>
+    <input type='text' name='name' value="{{ name }}" class='form-control'>
+    <label for='summary' class=''>Summary</label>
+    <textarea  name='summary' value="{{ summary }}" class='form-control'></textarea>
+    <label for='course_url' class=''>Course URL</label>
+    <input type='text' name='course_url' value="{{ course_url }}" class='form-control'>
+    <button type='submit' class='btn btn-primary'>Add</button>
+   </div>
+  </form>
+
+  <h4>Courses</h4>
+    <ul>
+      {% for c in courses %}
+        <li><a href='/course/{{ c.id }}'>{{ c.name }}</a></li>
+      {% endfor %}
+    </ul>
 {% endblock %}
