@@ -11,7 +11,8 @@ blueprint = flask.Blueprint("course", __name__, template_folder="templates")
 def course_get(course_id):
     user_id = cookie_auth.get_user_id_by_cookie(flask.request)
     user = user_services.get_user_by_id(user_id)
-
+    if not user:
+        return flask.redirect('/')
     course = course_services.get_course_by_id(course_id)
 
     return {'course': course, 'user': user} 
