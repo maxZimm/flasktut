@@ -23,3 +23,25 @@ def get_all_subjects_user(user):
     session = db_session.create_session()
     subjects = session.query(Subject).filter(Subject.user_id == user.id).all()
     return subjects
+
+def update_subject(subject, name_new, name_prev, desc_new, desc_prev):
+    if name_new == name_prev and desc_new == desc_prev:
+        return False
+    session = db_session.create_session()
+    s = session.query(Subject).filter(Subject.id == subject.id).first()
+    s.name = name_new
+    s.description = desc_new
+    session.commit()
+    return s
+
+def del_subject(subject): 
+    session = db_session.create_session()
+    s = session.query(Subject).filter(Subject.id == subject.id).first()
+    session.delete(s)
+    session.commit()
+    session = db_session.create_session()
+    try:
+        session.query(Subject).filter(Subject.id == subject.id).one()
+    except:
+        return True
+    return False

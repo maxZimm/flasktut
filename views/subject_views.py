@@ -44,7 +44,8 @@ def subject_get(subject_id):
     user = user_services.get_user_by_id(user_id)
     subject = subject_services.get_subject_by_id(subject_id)
     courses = course_services.get_courses_by_subject(subject)
-    return {'subject': subject, 'courses': courses, 'user': user}
+    errors = None
+    return {'subject': subject, 'courses': courses, 'user': user, 'errors': errors}
 
 @blueprint.route('/subjects/<int:subject_id>', methods=['POST'])
 @response(template_file='subjects/subject.html')
@@ -63,3 +64,30 @@ def subject_post(subject_id):
     else:
         resp = flask.redirect(f'/course/{c.id}')
         return resp
+
+@blueprint.route('/subjects/<int:subject_id>/update', methods=['POST'])
+@response(template_file='subjects/subject.html')
+def subject_update(subject_id):
+    subject = subject_services.get_subject_by_id(subject_id)
+    r = flask.request
+    updated = subject_services.update_subject(subject,
+                                              r.form.get('name'),
+                                              r.form.get('name_prev'), 
+                                              r.form.get('description'), 
+                                              r.form.get('description_prev')) 
+    if not updated:
+        return flask.redirect(f'/subjects/{subject.id}')
+
+    else:
+        resp =  flask.redirect(f'/subjects/{subject.id}')
+        return resp
+
+@blueprint.route('/subjects/<int:subject_id>/delete', methods=['GET'])
+@response(template_file='subjects/subject.html')
+def subject_delete(subject_id):
+    subject = subject_services.get_subject_by_id(subject_id)
+    d = subject_services.del_subject(subject)
+    if d:
+        return flask.redirect(f'/subjects')
+    else:
+        return flask.redirect(f'/subjects/{subject_id}')

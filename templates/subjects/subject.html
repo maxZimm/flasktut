@@ -4,16 +4,25 @@
   <h1>{{ subject.name }}</h1>
   <h2>Summary</h2>
     <p>{{ subject.description }}</p>
-
+  {% if errors %}
+    <h3>{{errors}}</h3>
+  {% endif %}
+  <form action='./{{subject.id}}/update' method='POST' name='update'>
+    <input type='hidden' name='name_prev' value='{{ subject.name}}'>
+    <input type='text' name='name' value='{{ subject.name}}'>
+    <input type='hidden' name='description_prev' value='{{ subject.description}}'>
+    <input type='text' name='description' value='{{ subject.description}}'>
+    <button type='submit' class='btn btn-success'>Update</button>
+  </form>
   <h3>Add Course</h3>
   <form action='' method='Post' class='form'>
    <div class='form-group'>
     <label for='name' class=''>Name</label>
-    <input type='text' name='name' value="{{ name }}" class='form-control'>
+    <input type='text' name='name' value="{{ name }}" class='form-control' required >
     <label for='summary' class=''>Summary</label>
     <textarea  name='summary' value="{{ summary }}" class='form-control'></textarea>
     <label for='course_url' class=''>Course URL</label>
-    <input type='text' name='course_url' value="{{ course_url }}" class='form-control'>
+    <input type='text' name='course_url' value="{{ course_url }}" class='form-control' required >
     <button type='submit' class='btn btn-primary'>Add</button>
    </div>
   </form>

@@ -23,7 +23,7 @@
   <h3>Your Subjects</h3>
     <ul>
     {% for s in subjects %}
-       <li> <a href='/subjects/{{s.id}}'>{{ s.name }}</a></li>
+       <li> <a href='/subjects/{{s.id}}'>{{ s.name }}</a></li><a href='/subjects/{{s.id}}/delete'>X</a>
     {% endfor %}
     </ul>
 {% endblock %}
