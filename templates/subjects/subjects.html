@@ -7,16 +7,23 @@
   <form action='' method='Post' class='form'>
     <div class='form-group'>
       <label for='name' class=''>Name</label>
-      <input type='text' name='name' class='form-control'>
+      <input type='text' name='name' value="{{ name }}" class='form-control'>
 
       <label for='description' class=''>Description</label>
-      <input type='text' name='description' class='form-control'>
+      <input type='text' name='description' value="{{ description }}" class='form-control'>
 
      <button type='submit' class='btn btn-primary'>Add</button>
      </div>
   </form>
 
-  {% if resp_content %}
-    <div>{{ resp_content }}</div>
+  {% if errors %}
+    <div>{{ errors }}</div>
   {% endif %}
+
+  <h3>Your Subjects</h3>
+    <ul>
+    {% for s in subjects %}
+       <li> <a href='/subjects/{{s.id}}'>{{ s.name }}</a></li><a href='/subjects/{{s.id}}/delete'>X</a>
+    {% endfor %}
+    </ul>
 {% endblock %}

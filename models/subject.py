@@ -14,7 +14,7 @@ class Subject(SqlAlchemyBase):
     updated_at = sa.Column(sa.DateTime, default=datetime.utcnow, index=True)
     user_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
 
-    course = orm.relation('Course', back_populates='subject')
+    course = orm.relation('Course', cascade='all, delete', back_populates='subject')
     user = orm.relation('User')
 
     def __repr__(self):

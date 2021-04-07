@@ -15,3 +15,6 @@ class Course(SqlAlchemyBase):
 
     subject_id = sa.Column(sa.Integer, sa.ForeignKey('subjects.id'))
     subject = orm.relation('Subject')
+
+    def _items(self):
+        return (('name', self.name),('summary', self.summary),('course_url', self.course_url))
