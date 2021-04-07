@@ -40,8 +40,8 @@ def del_subject(subject):
     session.delete(s)
     session.commit()
     session = db_session.create_session()
-    try:
-        session.query(Subject).filter(Subject.id == subject.id).one()
-    except:
+    check = session.query(Subject).filter(Subject.id == subject.id).first()
+    if not check:
         return True
-    return False
+    else:
+        return False
