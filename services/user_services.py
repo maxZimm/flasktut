@@ -24,7 +24,7 @@ def create_user(first_name, last_name, email, password):
     return u
 
 def hash_text(text):
-    hash_password = crypt.hash(text, rounds=170201)
+    hash_password = crypt.using(rounds=170201).hash(text) 
     return hash_password
 
 def verify_hash(text, hashed_text):
